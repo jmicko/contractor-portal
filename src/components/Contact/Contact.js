@@ -1,0 +1,32 @@
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import mapStoreToProps from '../../redux/mapStoreToProps';
+
+// Basic class component structure for React with default state
+// value setup. When making a new component be sure to replace
+// the component name TemplateClass with the name for the new
+// component.
+class Contact extends Component {
+  state = {
+    heading: 'Contact Forms',
+  };
+
+  render() {
+    return (
+      <div>
+        <h2>{this.state.heading}</h2>
+        <button
+            type="button"
+            className="btn btn_asLink"
+            onClick={() => {
+              this.props.history.push('/login');
+            }}
+          >
+            Login
+          </button>
+      </div>
+    );
+  }
+}
+
+export default connect(mapStoreToProps)(Contact);
