@@ -7,7 +7,7 @@ import RegisterForm from '../RegisterForm/RegisterForm';
 
 class RegisterPage extends Component {
   state = {
-    username: '',
+    email: '',
     password: '',
   };
 
