@@ -19,6 +19,10 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import Feedback from "../Feedback/Feedback";
+import ContactPage from "../ContactPage/ContactPage";
+import WorkRequest from "../WorkRequest/WorkRequest";
+import History from "../History/History";
 
 import './App.css';
 
@@ -42,6 +46,38 @@ class App extends Component {
               exact
               path="/about"
               component={AboutPage}
+            />
+
+            {/* Visiting localhost:3000/contact will show the about page. */}
+            <Route
+              // shows AboutPage at all times (logged in or not)
+              exact
+              path="/contact"
+              component={ContactPage}
+            />
+            
+            {/* Visiting localhost:3000/feedback will show the about page. */}
+            <Route
+              // shows AboutPage at all times (logged in or not)
+              exact
+              path="/workrequest"
+              component={WorkRequest}
+            />
+            
+            {/* Visiting localhost:3000/feedback will show the about page. */}
+            <Route
+              // shows AboutPage at all times (logged in or not)
+              exact
+              path="/feedback"
+              component={Feedback}
+            />
+            
+            {/* Visiting localhost:3000/feedback will show the about page. */}
+            <Route
+              // shows AboutPage at all times (logged in or not)
+              exact
+              path="/history"
+              component={History}
             />
 
             {/* For protected routes, the view could show one of several things on the same route.

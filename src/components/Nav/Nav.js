@@ -25,7 +25,7 @@ const Nav = (props) => {
         <Link className="nav-link" to={loginLinkData.path}>
           {/* Show this link if they are logged in or not,
           but call this link 'Home' if they are logged in,
-          and call this link 'Login / Register' if they are not */}
+        and call this link 'Login / Register' if they are not */}
           {loginLinkData.text}
         </Link>
         {/* Show the link to the info page and the logout button if the user is logged in */}
@@ -37,6 +37,9 @@ const Nav = (props) => {
             <LogOutButton className="nav-link" />
           </>
         )}
+        <Link className="nav-link" to="/contact">
+          Contact
+        </Link>
         {/* Always show this link since the about page is not protected */}
         <Link className="nav-link" to="/about">
           About

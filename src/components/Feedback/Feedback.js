@@ -15,6 +15,7 @@ class TemplateClass extends Component {
     return (
       <div>
         <h2>{this.state.heading}</h2>
+        <p>look at this great feedback form</p>
       </div>
     );
   }
