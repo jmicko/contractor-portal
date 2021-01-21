@@ -9,7 +9,7 @@ const router = express.Router();
  * GET route template
  */
 router.get('/feedbackReview', rejectUnauthenticated, (req, res) => {
-  // GET route code here
+  // todo - ORDER BY (date probably, need to adjust table)
   pool.query(`SELECT * FROM "feedback";`)
   .then((result) => res.send(result))
   .catch((err) => {
@@ -23,6 +23,7 @@ router.get('/feedbackReview', rejectUnauthenticated, (req, res) => {
  */
 router.post('/clientFeedback', (req, res, next) => {
   const user_id = req.user.id;
+  // todo - get first and last name from req.user, add rejectUnaut....
   const first_name = req.body.first_name;
   const last_name = req.body.last_name;
   const rating = req.body.rating;
@@ -32,8 +33,11 @@ router.post('/clientFeedback', (req, res, next) => {
 
   console.log('===========FEEDBACK POST ROUTE');
 
+  // todo - change feedback table to have a date column, set default values where needed
+  // make user id NOT NULL in work_request table and maybe feedback table as well
+
   const queryText = `INSERT INTO "feedback" (user_id, first_name, last_name, rating, image_url, comments, ok_to_share)
-    VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id`;
+    VALUES ($1, $2, $3, $4, $5, $6, $7)`;
   pool
     .query(queryText, [user_id, first_name, last_name, rating, image_url, comments, ok_to_share])
     .then(() => res.sendStatus(201))

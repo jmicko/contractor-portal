@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import FeedbackItem from '../FeedbackItem/FeedbackItem'
 
 // Basic class component structure for React with default state
 // value setup. When making a new component be sure to replace
@@ -26,7 +27,7 @@ class FeedbackReview extends Component {
         {JSON.stringify(this.props.store.feedback)}
         {this.props.store.feedback.map((feedbackItem) => {
           return(
-            <p>{feedbackItem.comments}</p>
+            <FeedbackItem feedbackItem={feedbackItem} />
           )
         })}
       </div>

@@ -41,6 +41,7 @@ class Feedback extends Component {
         },
       });
     } else {
+      // render an error message in the ui instead of this error thing
       this.props.dispatch({ type: 'LOGIN_INPUT_ERROR' });
     }
   }; // end login

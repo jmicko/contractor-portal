@@ -4,8 +4,6 @@ import axios from 'axios';
 // worker Saga: will be fired on "LOGIN" actions
 function* sendFeedback(action) {
   try {
-    // clear any existing error on the login page
-    // yield put({ type: 'CLEAR_LOGIN_ERROR' });
 
     const config = {
       headers: { 'Content-Type': 'application/json' },
@@ -16,19 +14,11 @@ function* sendFeedback(action) {
     // the config includes credentials which
     // allow the server session to recognize the user
     yield axios.post('/api/forms/clientFeedback', action.payload, config);
+    // do a put thing to fetch the stuff right after so it shows up on the same page.
+    // because nothing is telling it to get the new data. Can remove this later once I have split the components
+    yield put({ type: 'FETCH_FEEDBACK', });
   } catch (error) {
     console.log('Error with feedback:', error);
-    if (error.response.status === 401) {
-      // todo - adjust these errors so they aren't about login
-      // The 401 is the error status sent from passport
-      // if user isn't in the database or
-      // if the email and password don't match in the database
-      yield put({ type: 'LOGIN_FAILED' });
-    } else {
-      // Got an error that wasn't a 401
-      // Could be anything, but most common cause is the server is not started
-      yield put({ type: 'LOGIN_FAILED_NO_CODE' });
-    }
   }
 }
 
