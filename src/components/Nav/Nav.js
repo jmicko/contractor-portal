@@ -37,6 +37,8 @@ const Nav = (props) => {
             <LogOutButton className="nav-link" />
           </>
         )}
+        {/* Show the contact page */}
+        {/* todo - redirect to login if not logged in */}
         <Link className="nav-link" to="/contact">
           Contact
         </Link>
