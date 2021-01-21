@@ -12,13 +12,13 @@ class FeedbackReview extends Component {
     heading: 'Review Feedback',
   };
 
-  // todo - GET feedback items from DB
   componentDidMount() {
-    const action = {type: 'FETCH_FEEDBACK'};
+    const action = { type: 'FETCH_FEEDBACK' };
     this.props.dispatch(action);
-}
-  // map over returned data 
-  // create component for each item
+  }
+
+
+
 
   render() {
     return (
@@ -26,8 +26,11 @@ class FeedbackReview extends Component {
         <h2>{this.state.heading}</h2>
         {JSON.stringify(this.props.store.feedback)}
         {this.props.store.feedback.map((feedbackItem) => {
-          return(
-            <FeedbackItem feedbackItem={feedbackItem} />
+          return (
+            <FeedbackItem
+              feedbackItem={feedbackItem}
+              // delete={this.delete}
+            />
           )
         })}
       </div>
