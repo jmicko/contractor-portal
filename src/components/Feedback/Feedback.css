@@ -1,0 +1,8 @@
+.radio-input{
+    display: grid;
+    grid-template-columns: repeat(5, 3rem);
+}
+
+.radio-input div{
+    text-align: center;
+}
