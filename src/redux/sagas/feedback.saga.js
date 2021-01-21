@@ -16,13 +16,10 @@ function* sendFeedback(action) {
     // the config includes credentials which
     // allow the server session to recognize the user
     yield axios.post('/api/forms/clientFeedback', action.payload, config);
-
-    // after the user has logged in
-    // get the user information from the server
-    yield put({ type: 'FETCH_USER' });
   } catch (error) {
-    console.log('Error with user login:', error);
+    console.log('Error with feedback:', error);
     if (error.response.status === 401) {
+      // todo - adjust these errors so they aren't about login
       // The 401 is the error status sent from passport
       // if user isn't in the database or
       // if the email and password don't match in the database
@@ -36,7 +33,7 @@ function* sendFeedback(action) {
 }
 
 // worker Saga: will be fired on "LOGOUT" actions
-function* logoutUser(action) {
+function* fetchFeedback(action) {
   try {
     const config = {
       headers: { 'Content-Type': 'application/json' },
@@ -45,22 +42,23 @@ function* logoutUser(action) {
 
     // the config includes credentials which
     // allow the server session to recognize the user
-    // when the server recognizes the user session
-    // it will end the session
-    yield axios.post('/api/user/logout', config);
+    // if a user is logged in
+    // it will send the feedback items
+    const response = yield axios.get('/api/forms/feedbackReview', config);
+    console.log('THIS SHOULD BE FEEDBACK ITEMS', response.data.rows);
 
     // now that the session has ended on the server
     // remove the client-side user object to let
     // the client-side code know the user is logged out
-    yield put({ type: 'UNSET_USER' });
+    yield put({ type: 'SET_FEEDBACK', payload: response.data.rows });
   } catch (error) {
-    console.log('Error with user logout:', error);
+    console.log('Feedback get request failed', error);
   }
 }
 
 function* loginSaga() {
   yield takeLatest('SEND_FEEDBACK', sendFeedback);
-  // yield takeLatest('LOGOUT', logoutUser);
+  yield takeLatest('FETCH_FEEDBACK', fetchFeedback);
 }
 
 export default loginSaga;

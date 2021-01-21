@@ -13,7 +13,7 @@ class FeedbackReview extends Component {
 
   // todo - GET feedback items from DB
   componentDidMount() {
-    const action = {type: 'GET_FEEDBACK'};
+    const action = {type: 'FETCH_FEEDBACK'};
     this.props.dispatch(action);
 }
   // map over returned data 
