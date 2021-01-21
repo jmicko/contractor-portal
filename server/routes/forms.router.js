@@ -1,12 +1,21 @@
 const express = require('express');
+const {
+  rejectUnauthenticated,
+} = require('../modules/authentication-middleware');
 const pool = require('../modules/pool');
 const router = express.Router();
 
 /**
  * GET route template
  */
-router.get('/', (req, res) => {
+router.get('/feedbackReview', rejectUnauthenticated, (req, res) => {
   // GET route code here
+  pool.query(`SELECT * FROM "feedback";`)
+  .then((result) => res.send(result))
+  .catch((err) => {
+    console.log('Feedback GET failed: ', err);
+    res.sendStatus(500);
+  });
 });
 
 /**
