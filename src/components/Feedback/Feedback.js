@@ -7,7 +7,7 @@ import './Feedback.css'
 // value setup. When making a new component be sure to replace
 // the component name TemplateClass with the name for the new
 // component.
-class TemplateClass extends Component {
+class Feedback extends Component {
   state = {
     heading: 'Feedback',
     first_name: '',
@@ -183,4 +183,4 @@ class TemplateClass extends Component {
   }
 }
 
-export default connect(mapStoreToProps)(TemplateClass);
+export default connect(mapStoreToProps)(Feedback);
