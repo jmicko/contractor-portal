@@ -21,6 +21,10 @@ class TemplateClass extends Component {
     this.props.dispatch(action);
   }
 
+  featureFeedback = () => {
+    console.log('feature feedback button clicked! feedbackItem id is:', this.props.feedbackItem.id);
+  }
+
   render() {
     return (
       <div className="feedback-container">
@@ -29,6 +33,7 @@ class TemplateClass extends Component {
         <p><strong>Rating: </strong>{this.props.feedbackItem.rating}/5</p>
         <p><strong>Comments: </strong>{this.props.feedbackItem.comments}</p>
         <button onClick={this.deleteFeedback}>Delete</button>
+        <button onClick={this.featureFeedback}>Feature</button>
       </div>
     );
   }
