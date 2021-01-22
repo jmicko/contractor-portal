@@ -27,10 +27,15 @@ class FeedbackReview extends Component {
         {JSON.stringify(this.props.store.feedback)}
         {this.props.store.feedback.map((feedbackItem) => {
           return (
+            <div>
+
+            <p>{feedbackItem.id}</p>
             <FeedbackItem
+              key={FeedbackItem.id}
               feedbackItem={feedbackItem}
               // delete={this.delete}
-            />
+              />
+              </div>
           )
         })}
       </div>

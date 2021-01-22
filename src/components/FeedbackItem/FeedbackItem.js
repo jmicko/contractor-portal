@@ -14,17 +14,17 @@ class TemplateClass extends Component {
 
   deleteFeedback = () => {
     console.log('delete feedback button clicked! feedbackItem id is:', this.props.feedbackItem.id);
-    // const action = { 
-    //   type: 'DELETE_FEEDBACK',
-    //   payload: this.props.feedbackItem.id
-    //  };
-    // this.props.dispatch(action);
+    const action = { 
+      type: 'DELETE_FEEDBACK',
+      payload: this.props.feedbackItem.id
+     };
+    this.props.dispatch(action);
   }
 
   render() {
     return (
       <div className="feedback-container">
-        <img src={this.props.feedbackItem.image_url} alt={'project image'}></img>
+        <img src={this.props.feedbackItem.image_url} alt={'project'}></img>
         <p>{this.props.feedbackItem.first_name + " " + this.props.feedbackItem.last_name}</p>
         <p><strong>Rating: </strong>{this.props.feedbackItem.rating}/5</p>
         <p><strong>Comments: </strong>{this.props.feedbackItem.comments}</p>

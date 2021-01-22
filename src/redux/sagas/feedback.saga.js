@@ -22,7 +22,6 @@ function* sendFeedback(action) {
   }
 }
 
-// worker Saga: will be fired on "LOGOUT" actions
 function* fetchFeedback(action) {
   try {
     const config = {
@@ -46,9 +45,35 @@ function* fetchFeedback(action) {
   }
 }
 
+
+function* deleteFeedback(action) {
+  try {
+    const config = {
+      headers: { 
+        'Content-Type': 'application/json',
+        'feedbackid': action.payload,
+       },
+      withCredentials: true,
+    };
+
+    // the config includes credentials which
+    // allow the server session to recognize the user
+    // if a user is logged in
+    // it will send the feedback items
+    yield axios.delete('/api/forms/feedbackReview', config);
+    // console.log('THIS SHOULD BE FEEDBACK ITEMS', response.data.rows);
+
+    // refresh feedback reducer
+    // yield put({ type: 'SET_FEEDBACK'});
+  } catch (error) {
+    console.log('Feedback delete request failed', error);
+  }
+}
+
 function* loginSaga() {
   yield takeLatest('SEND_FEEDBACK', sendFeedback);
   yield takeLatest('FETCH_FEEDBACK', fetchFeedback);
+  yield takeLatest('DELETE_FEEDBACK', deleteFeedback);
 }
 
 export default loginSaga;
