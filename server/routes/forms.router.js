@@ -5,9 +5,7 @@ const {
 const pool = require('../modules/pool');
 const router = express.Router();
 
-/**
- * GET route template
- */
+// GET route
 router.get('/feedbackReview', rejectUnauthenticated, (req, res) => {
   // todo - ORDER BY (date probably, need to adjust table)
   pool.query(`SELECT * FROM "feedback";`)
@@ -18,10 +16,8 @@ router.get('/feedbackReview', rejectUnauthenticated, (req, res) => {
   });
 });
 
-/**
- * POST route template
- */
-router.post('/clientFeedback', (req, res, next) => {
+// POST route
+router.post('/clientFeedback', rejectUnauthenticated, (req, res, next) => {
   const user_id = req.user.id;
   // todo - get first and last name from req.user, add rejectUnaut....
   const first_name = req.body.first_name;
@@ -47,9 +43,29 @@ router.post('/clientFeedback', (req, res, next) => {
   });
 });
 
-/**
- * DELETE route
- */
+// PUT route
+router.put('/feedbackReview', rejectUnauthenticated, (req, res) => {
+  const user_id = req.user.id;
+  const id = req.headers.feedbackid;
+  // only toggling a boolean for now, so probably don't need this one
+  const is_public = req.body.is_public;
+  
+  console.log('===========FEEDBACK PUT ROUTE', id)
+  
+  // todo - change feedback table to have a date column, set default values where needed
+  // make user id NOT NULL in work_request table and maybe feedback table as well
+  
+  const queryText = `UPDATE "feedback" SET "is_public" = NOT "is_public" WHERE "id"=$1;`;
+  pool
+  .query(queryText, [id])
+  .then(() => res.sendStatus(201))
+  .catch((err) => {
+    console.log('Add feedback failed: ', err);
+    res.sendStatus(500);
+  });
+});
+
+// DELETE route
 router.delete('/feedbackReview', rejectUnauthenticated, (req, res) => {
   console.log('req.payload in delete route is:', req.headers.feedbackid)
   const id = req.headers.feedbackid;
