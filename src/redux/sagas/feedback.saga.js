@@ -64,7 +64,7 @@ function* deleteFeedback(action) {
     // console.log('THIS SHOULD BE FEEDBACK ITEMS', response.data.rows);
 
     // refresh feedback reducer
-    // yield put({ type: 'SET_FEEDBACK'});
+    yield put({ type: 'FETCH_FEEDBACK'});
   } catch (error) {
     console.log('Feedback delete request failed', error);
   }

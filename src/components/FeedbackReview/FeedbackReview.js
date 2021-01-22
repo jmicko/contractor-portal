@@ -24,7 +24,7 @@ class FeedbackReview extends Component {
     return (
       <div>
         <h2>{this.state.heading}</h2>
-        {JSON.stringify(this.props.store.feedback)}
+        {/* {JSON.stringify(this.props.store.feedback)} */}
         {this.props.store.feedback.map((feedbackItem) => {
           return (
             <div>
