@@ -39,7 +39,8 @@ function* sendFeedback(action) {
     // allow the server session to recognize the user
     yield axios.post('/api/forms/clientFeedback', action.payload, config);
     // do a put thing to fetch the stuff right after so it shows up on the same page.
-    // because nothing is telling it to get the new data. Can remove this later once I have split the components
+    // because nothing is telling it to get the new data. 
+    // Can remove this later once I have split the components
     yield put({ type: 'FETCH_FEEDBACK', });
   } catch (error) {
     console.log('Error with feedback:', error);
@@ -49,7 +50,6 @@ function* sendFeedback(action) {
 // toggle the visibility of feedback items on the home page
 function* updateFeedback(action) {
   try {
-
     const config = {
       headers: { 
         'Content-Type': 'application/json',
@@ -58,14 +58,15 @@ function* updateFeedback(action) {
       withCredentials: true, 
     };  
 
-    console.log('=========== IN UPDATE SAGA');
+    console.log('=========== IN UPDATE SAGA', action.payload);
 
     // send the action.payload as the body
     // the config includes credentials which
     // allow the server session to recognize the user
     yield axios.put('/api/forms/feedbackReview', config);
     // do a put thing to fetch the stuff right after so it shows up on the same page.
-    // because nothing is telling it to get the new data. Can remove this later once I have split the components
+    // because nothing is telling it to get the new data. 
+    // Can remove this later once I have split the components
     yield put({ type: 'FETCH_FEEDBACK', });
   } catch (error) {
     console.log('Error with feedback:', error);

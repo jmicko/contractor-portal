@@ -8,7 +8,7 @@ const router = express.Router();
 // GET route
 router.get('/feedbackReview', rejectUnauthenticated, (req, res) => {
   // todo - ORDER BY (date probably, need to adjust table)
-  pool.query(`SELECT * FROM "feedback";`)
+  pool.query(`SELECT * FROM "feedback" ORDER BY "id" desc;`)
   .then((result) => res.send(result))
   .catch((err) => {
     console.log('Feedback GET failed: ', err);
@@ -45,12 +45,13 @@ router.post('/clientFeedback', rejectUnauthenticated, (req, res, next) => {
 
 // PUT route
 router.put('/feedbackReview', rejectUnauthenticated, (req, res) => {
+  console.log('req.payload in put route is:', req.body.headers.feedbackid)
   const user_id = req.user.id;
-  const id = req.headers.feedbackid;
+  const id = req.body.headers.feedbackid;
   // only toggling a boolean for now, so probably don't need this one
   const is_public = req.body.is_public;
   
-  console.log('===========FEEDBACK PUT ROUTE', id)
+  console.log('===========FEEDBACK PUT ROUTE', req.body)
   
   // todo - change feedback table to have a date column, set default values where needed
   // make user id NOT NULL in work_request table and maybe feedback table as well
