@@ -49,7 +49,7 @@ class Feedback extends Component {
   render() {
     return (
       <div>
-        {JSON.stringify(this.state)}
+        {/* {JSON.stringify(this.state)} */}
         <h2>{this.state.heading}</h2>
         <p>look at this great feedback form</p>
         {/* Client Feedback form */}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import RegisterForm from '../RegisterForm/RegisterForm'
 
 // Basic class component structure for React with default state
 // value setup. When making a new component be sure to replace
@@ -55,6 +56,13 @@ class Contact extends Component {
             View History
           </button>
 
+        </div>
+        <div>
+          <RegisterForm />
+          <h4>Already a Member?</h4>
+          <button className="btn btn_sizeSm" onClick={this.onLogin}>
+            Login
+              </button>
         </div>
       </div>
     );

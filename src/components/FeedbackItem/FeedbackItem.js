@@ -37,6 +37,7 @@ class TemplateClass extends Component {
         <p>{this.props.feedbackItem.first_name + " " + this.props.feedbackItem.last_name}</p>
         <p><strong>Rating: </strong>{this.props.feedbackItem.rating}/5</p>
         <p><strong>Comments: </strong>{this.props.feedbackItem.comments}</p>
+        <p><strong>Allowed to share publicly: </strong>{String(this.props.feedbackItem.ok_to_share)}</p>
         <p><strong>Public? </strong>{String(this.props.feedbackItem.is_public)}</p>
         <button onClick={this.deleteFeedback}>Delete</button>
         <button onClick={this.featureFeedback}>Feature</button>

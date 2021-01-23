@@ -18,7 +18,7 @@ class Feedback extends Component {
       <div>
         <h2>{this.state.heading}</h2>
         {/* todo - conditionally render components based on if user is admin or not */}
-        User is admin: {JSON.stringify(this.props.store.user.is_admin)}
+        {/* User is admin: {JSON.stringify(this.props.store.user.is_admin)} */}
         {this.props.store.user.is_admin
         ? <FeedbackReview />
         : <ClientFeedback />
