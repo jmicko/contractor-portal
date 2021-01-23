@@ -1,0 +1,47 @@
+.contact-card{
+    color: aqua;
+    /* padding: 1rem;
+    margin: 1rem; */
+    margin: 1em;
+    padding: 0%;
+    height: 250px;
+    width: 250px;
+    border-radius: 1em;
+}
+
+
+.contact-card:hover{
+    border: black .2em solid;
+    margin: 0em;
+}
+
+.contact-card:active{
+    border: black .2em solid;
+    height: 240px;
+    margin-top: 5px;
+}
+
+.contact-card{
+    margin: .2em;
+}
+
+.btn-contact-card{
+
+}
+
+.contact-card-container{
+    display: grid;
+
+}
+
+.request{
+    grid-column: 1;
+}
+
+.feedback{
+    grid-column: 2;
+}
+
+.history{
+    grid-column: 3;
+}

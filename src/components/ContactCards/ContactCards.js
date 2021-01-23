@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import './ContactCards.css';
 
 // Basic class component structure for React with default state
 // value setup. When making a new component be sure to replace
@@ -13,8 +14,38 @@ class ContactCards extends Component {
 
   render() {
     return (
-      <div>
-        <h2>{this.state.heading}</h2>
+      <div className="contact-card-container">
+        <div className="contact-card request">
+          <button
+            type="button"
+            className="btn-contact-card"
+            onClick={() => {
+              this.props.history.push('/workrequest');
+            }}>
+            Request Work
+        </button>
+        </div>
+        <div className="contact-card feedback">
+          <button
+            type="button"
+            className="btn-contact-card"
+            onClick={() => {
+              this.props.history.push('/feedback');
+            }}>
+            Send Feedback
+      </button>
+        </div>
+        <div className="contact-card history">
+          <button
+            type="button"
+            className="btn-contact-card"
+            onClick={() => {
+              this.props.history.push('/history');
+            }}
+          >
+            View History
+      </button>
+        </div>
       </div>
     );
   }

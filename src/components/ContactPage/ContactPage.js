@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import RegisterForm from '../RegisterForm/RegisterForm'
+import RegisterForm from '../RegisterForm/RegisterForm';
+import ContactCards from '../ContactCards/ContactCards';
+import './ContactPage.css';
+
 
 // Basic class component structure for React with default state
 // value setup. When making a new component be sure to replace
@@ -12,9 +15,14 @@ class Contact extends Component {
     heading: 'Contact Forms',
   };
 
+  onLogin = (event) => {
+    this.props.history.push('/login');
+  };
+
   render() {
     return (
       <div>
+        {JSON.stringify(this.props.store.user)}
         <div>
           <h2>{this.state.heading}</h2>
           <button
@@ -27,42 +35,19 @@ class Contact extends Component {
             Login
           </button>
         </div>
+        <ContactCards />
         <div>
-          <button
-            type="button"
-            // className="btn btn_asLink"
-            onClick={() => {
-              this.props.history.push('/workrequest');
-            }}
-          >
-            Request Work
-          </button>
-          <button
-            type="button"
-            // className="btn btn_asLink"
-            onClick={() => {
-              this.props.history.push('/feedback');
-            }}
-          >
-            Send Feedback
-          </button>
-          <button
-            type="button"
-            // className="btn btn_asLink"
-            onClick={() => {
-              this.props.history.push('/history');
-            }}
-          >
-            View History
-          </button>
-
-        </div>
-        <div>
-          <RegisterForm />
-          <h4>Already a Member?</h4>
-          <button className="btn btn_sizeSm" onClick={this.onLogin}>
-            Login
+          {this.props.store.user.id
+            ?<></>
+            :<div>
+              <RegisterForm />
+              <h4>Already a Member?</h4>
+              <button className="btn btn_sizeSm" onClick={this.onLogin}>
+                Login
               </button>
+            </div>
+          }
+
         </div>
       </div>
     );
