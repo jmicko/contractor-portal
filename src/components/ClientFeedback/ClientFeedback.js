@@ -55,7 +55,10 @@ class Feedback extends Component {
           is_public: this.state.is_public,
         },
       });
-      this.props.history.push('/contact')
+      this.props.history.push({
+        pathname : '/contact',
+        state: {thanks: true}
+      })
     } else {
       // render an error message in the ui instead of this error thing
       this.props.dispatch({ type: 'LOGIN_INPUT_ERROR' });

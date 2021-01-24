@@ -1,0 +1,11 @@
+div.thanks{
+    background-color: #b88686;
+    /* color: violet; */
+    padding: .4rem 1rem;
+    width: max-content;
+    border-radius: .3rem;
+}
+
+.thanks p{
+    margin: 0;
+}

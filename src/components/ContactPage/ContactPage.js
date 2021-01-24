@@ -22,9 +22,17 @@ class Contact extends Component {
   render() {
     return (
       <div>
-        {/* {JSON.stringify(this.props.store.user)} */}
+        {/* {JSON.stringify(this.props.location.state.thanks)} */}
         <div>
-          <h2>{this.state.heading}</h2>
+          <center>
+            <h2>{this.state.heading}</h2>
+            {this.props.location.state
+              ?<div className="thanks">
+              <p>Thank you!
+                <br/>Your feedback is appreciated!</p>
+              </div>
+              :<></>}
+          </center>
         </div>
         <div>
           {this.props.store.user.id
