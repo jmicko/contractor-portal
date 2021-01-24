@@ -6,3 +6,11 @@
 .radio-input div{
     text-align: center;
 }
+
+.radio-input p{
+    margin-top: 0;
+}
+
+.inline{
+    display: inline;
+}

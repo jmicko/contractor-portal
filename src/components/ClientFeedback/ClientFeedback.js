@@ -63,14 +63,14 @@ class Feedback extends Component {
   render() {
     return (
       <div>
-        <h3>
+        {/* <h3>
           state
         </h3>
         {JSON.stringify(this.state)}
         <h3>
           user
         </h3>
-        {JSON.stringify(this.props.store.user)}
+        {JSON.stringify(this.props.store.user)} */}
         {/* Client Feedback form */}
         {/* todo - move into separate component */}
         {/* todo - create Admin feedback review component */}
@@ -174,7 +174,7 @@ class Feedback extends Component {
           <div>
             <label htmlFor="comments">
               Additional Comments:
-            <input
+            <textarea
                 type="text"
                 name="comments"
                 value={this.state.comments}
