@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import { withRouter } from 'react-router-dom';
 import './ContactCards.css';
 
 // Basic class component structure for React with default state
@@ -59,4 +60,4 @@ class ContactCards extends Component {
   }
 }
 
-export default connect(mapStoreToProps)(ContactCards);
+export default withRouter(connect(mapStoreToProps)(ContactCards));
