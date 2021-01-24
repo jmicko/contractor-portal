@@ -40,7 +40,7 @@ class App extends Component {
           </div>
           <Nav />
           <div className="container">
-
+            
             <Switch>
               {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
               <Redirect exact from="/" to="/home" />
@@ -51,7 +51,7 @@ class App extends Component {
                 exact
                 path="/about"
                 component={AboutPage}
-              />
+                />
 
               {/* Visiting localhost:3000/contact will show the about page. */}
               <Route
@@ -59,7 +59,7 @@ class App extends Component {
                 exact
                 path="/contact"
                 component={ContactPage}
-              />
+                />
 
               {/* Visiting localhost:3000/feedback will show the about page. */}
               <Route
@@ -67,7 +67,7 @@ class App extends Component {
                 exact
                 path="/workrequest"
                 component={WorkRequest}
-              />
+                />
 
               {/* Visiting localhost:3000/feedback will show the about page. */}
               <ProtectedRoute
@@ -75,7 +75,7 @@ class App extends Component {
                 exact
                 path="/feedback"
                 component={Feedback}
-              />
+                />
 
               {/* Visiting localhost:3000/feedback will show the about page. */}
               <Route
@@ -83,47 +83,47 @@ class App extends Component {
                 exact
                 path="/history"
                 component={History}
-              />
+                />
 
               {/* For protected routes, the view could show one of several things on the same route.
                 Visiting localhost:3000/user will show the UserPage if the user is logged in.
                 If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
-                Even though it seems like they are different pages, the user is always on localhost:3000/user */}
+              Even though it seems like they are different pages, the user is always on localhost:3000/user */}
               <ProtectedRoute
                 // logged in shows UserPage else shows LoginPage
                 exact
                 path="/user"
                 component={UserPage}
-              />
+                />
 
               <ProtectedRoute
                 // logged in shows InfoPage else shows LoginPage
                 exact
                 path="/info"
                 component={InfoPage}
-              />
+                />
 
               {/* When a value is supplied for the authRedirect prop the user will
                 be redirected to the path supplied when logged in, otherwise they will
-                be taken to the component and path supplied. */}
+              be taken to the component and path supplied. */}
               <ProtectedRoute
                 // with authRedirect:
-                // - if logged in, redirects to "/user"
+                // - if logged in, redirects to "/home"
                 // - else shows LoginPage at /login
                 exact
                 path="/login"
                 component={LoginPage}
-                authRedirect="/user"
-              />
+                authRedirect="/home"
+                />
               <ProtectedRoute
                 // with authRedirect:
-                // - if logged in, redirects to "/user"
+                // - if logged in, redirects to "/home"
                 // - else shows RegisterPage at "/registration"
                 exact
                 path="/registration"
                 component={RegisterPage}
-                authRedirect="/user"
-              />
+                authRedirect="/home"
+                />
               <Route
                 // with authRedirect:
                 // - if logged in, redirects to "/user"
@@ -131,7 +131,7 @@ class App extends Component {
                 exact
                 path="/home"
                 component={LandingPage}
-              />
+                />
 
               {/* If none of the other routes matched, we will show a 404. */}
               <Route render={() => <h1>404</h1>} />
