@@ -22,7 +22,7 @@ class Contact extends Component {
   render() {
     return (
       <div>
-        {JSON.stringify(this.props.store.user)}
+        {/* {JSON.stringify(this.props.store.user)} */}
         <div>
           <h2>{this.state.heading}</h2>
           <button
