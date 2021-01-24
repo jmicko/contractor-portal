@@ -23,6 +23,8 @@ import Feedback from "../Feedback/Feedback";
 import ContactPage from "../ContactPage/ContactPage";
 import WorkRequest from "../WorkRequest/WorkRequest";
 import History from "../History/History";
+import Blog from "../Blog/Blog";
+import Gallery from "../Gallery/Gallery";
 
 import './App.css';
 
@@ -45,12 +47,12 @@ class App extends Component {
               {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
               <Redirect exact from="/" to="/home" />
 
-              {/* Visiting localhost:3000/about will show the about page. */}
+              {/* Visiting localhost:3000/blog will show the blog page. */}
               <Route
-                // shows AboutPage at all times (logged in or not)
+                // shows Blog at all times (logged in or not)
                 exact
-                path="/about"
-                component={AboutPage}
+                path="/blog"
+                component={Blog}
                 />
 
               {/* Visiting localhost:3000/contact will show the about page. */}
@@ -78,7 +80,7 @@ class App extends Component {
                 />
 
               {/* Visiting localhost:3000/feedback will show the about page. */}
-              <Route
+              <ProtectedRoute
                 // shows AboutPage at all times (logged in or not)
                 exact
                 path="/history"
@@ -95,14 +97,6 @@ class App extends Component {
                 path="/user"
                 component={UserPage}
                 />
-
-              <ProtectedRoute
-                // logged in shows InfoPage else shows LoginPage
-                exact
-                path="/info"
-                component={InfoPage}
-                />
-
               {/* When a value is supplied for the authRedirect prop the user will
                 be redirected to the path supplied when logged in, otherwise they will
               be taken to the component and path supplied. */}

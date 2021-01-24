@@ -12,12 +12,26 @@ class Feedback extends Component {
     heading: 'Client Feedback',
     first_name: '',
     last_name: '',
-    rating: 0,
+    project_name: '',
+    rating: 5,
     image_url: '',
     comments: '',
     ok_to_share: true,
     is_public: true
   };
+
+  componentDidMount() {
+    this.resetValues();
+  }
+
+  resetValues = () => {
+    this.props.store.user !== null
+      ? this.setState({
+        first_name: this.props.store.user.first_name,
+        last_name: this.props.store.user.last_name
+      })
+      : this.setState({})
+  }
 
   handleInputChangeFor = (propertyName) => (event) => {
     this.setState({
@@ -49,14 +63,19 @@ class Feedback extends Component {
   render() {
     return (
       <div>
-        {/* {JSON.stringify(this.state)} */}
-        <h2>{this.state.heading}</h2>
-        <p>look at this great feedback form</p>
+        <h3>
+          state
+        </h3>
+        {JSON.stringify(this.state)}
+        <h3>
+          user
+        </h3>
+        {JSON.stringify(this.props.store.user)}
         {/* Client Feedback form */}
         {/* todo - move into separate component */}
         {/* todo - create Admin feedback review component */}
         {/* todo - conditionally render client/admin components based on is_admin user property */}
-        <form onSubmit={this.sendFeedback}>
+        <form className="formPanel" onSubmit={this.sendFeedback}>
           <h2>Send Feedback</h2>
           <div>
             <label htmlFor="first_name">
