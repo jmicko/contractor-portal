@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import { withRouter } from 'react-router-dom';
 import './ClientFeedback.css'
 
 // Basic class component structure for React with default state
@@ -54,6 +55,7 @@ class Feedback extends Component {
           is_public: this.state.is_public,
         },
       });
+      this.props.history.push('/contact')
     } else {
       // render an error message in the ui instead of this error thing
       this.props.dispatch({ type: 'LOGIN_INPUT_ERROR' });
@@ -195,4 +197,4 @@ class Feedback extends Component {
   }
 }
 
-export default connect(mapStoreToProps)(Feedback);
+export default withRouter(connect(mapStoreToProps)(Feedback));
