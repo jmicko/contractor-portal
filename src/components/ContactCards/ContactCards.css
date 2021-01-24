@@ -1,46 +1,7 @@
-.contact-card{
-    display: flex;
-    color: aqua;
-    /* padding: 1rem;
-    margin: 1rem; */
-    margin: 1em;
-    padding: 0%;
-    height: 250px;
-    width: 250px;
-    border-radius: .3em;
-    background-color: blue;
-    justify-content: center;
-}
-
-
-.contact-card:hover{
-    border: black .2em solid;
-    /* margin: 0em; */
-}
-
-.contact-card:active{
-    border: black .2em solid;
-    margin-top: 5px;
-}
-
-.btn-contact-card{
-    align-self: flex-end;
-}
-
 .contact-card-container{
     display: grid;
-    grid-template-columns: repeat(3, min-content);
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 1rem;
+    row-gap: 1rem;
+    /* width: 100%; */
 }
-
-.request{
-    grid-column: 1;
-}
-
-.feedback{
-    grid-column: 2;
-}
-
-.history{
-    grid-column: 3;
-}
-

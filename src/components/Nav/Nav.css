@@ -8,7 +8,7 @@
 
 .nav {
   /* margin: 0 0 30px; */
-  background-color: #986247;
+  background-color: #302825;
   overflow: hidden;
   position: -webkit-sticky;
   position: sticky;
@@ -21,7 +21,7 @@
 .nav-link {
   float: left;
   color: #f2f2f2;
-  background-color: #986247;
+  background-color: #302825;
   text-align: center;
   padding: 24px 10px;
   text-decoration: none;
