@@ -51,6 +51,13 @@ class App extends Component {
                 path="/blog"
                 component={Blog}
                 />
+              {/* Visiting localhost:3000/gallery will show the gallery page. */}
+              <Route
+                // shows gallery at all times (logged in or not)
+                exact
+                path="/gallery"
+                component={Gallery}
+                />
 
               {/* Visiting localhost:3000/contact will show the about page. */}
               <Route
