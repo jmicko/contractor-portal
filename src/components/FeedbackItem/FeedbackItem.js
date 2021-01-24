@@ -33,14 +33,21 @@ class TemplateClass extends Component {
   render() {
     return (
       <div className="feedback-container">
+        <div className="imagePanel">
         <img src={this.props.feedbackItem.image_url} alt={'project'}></img>
+        </div>
+        <div className="textPanel">
+          <p>Feedback ID: {this.props.feedbackItem.id}</p>
         <p>{this.props.feedbackItem.first_name + " " + this.props.feedbackItem.last_name}</p>
         <p><strong>Rating: </strong>{this.props.feedbackItem.rating}/5</p>
         <p><strong>Comments: </strong>{this.props.feedbackItem.comments}</p>
         <p><strong>Allowed to share publicly: </strong>{String(this.props.feedbackItem.ok_to_share)}</p>
         <p><strong>Public? </strong>{String(this.props.feedbackItem.is_public)}</p>
+        </div>
+        <div className="buttonPanel">
         <button onClick={this.deleteFeedback}>Delete</button>
         <button onClick={this.featureFeedback}>Feature</button>
+        </div>
       </div>
     );
   }
