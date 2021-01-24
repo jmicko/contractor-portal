@@ -45,8 +45,8 @@ class TemplateClass extends Component {
         {/* <p><strong>Public? </strong>{String(this.props.feedbackItem.is_public)}</p> */}
         </div>
         <div className="button-panel">
-        <button className="btn btn-feedback"  onClick={this.deleteFeedback}>Delete</button>
         <button className="btn btn-feedback"  onClick={this.featureFeedback}>Feature</button>
+        <button className="btn btn-feedback"  onClick={this.deleteFeedback}>Delete</button>
         </div>
       </div>
     );
