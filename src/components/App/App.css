@@ -113,3 +113,8 @@ input {
   margin: 5px;
   margin-bottom: 10px;
 }
+
+.container{
+  max-width: 60rem;
+  margin: auto;
+}
