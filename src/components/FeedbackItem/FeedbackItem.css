@@ -19,3 +19,16 @@
 .feedback-container img{
     width: 20rem;
 }
+
+.button-panel{
+    padding: 1rem;
+}
+
+.image-panel{
+    padding: 1rem;
+}
+
+.btn-feedback{
+    margin: 0 0 .5rem 0;
+    width: 100%;
+}

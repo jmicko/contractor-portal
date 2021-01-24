@@ -33,20 +33,20 @@ class TemplateClass extends Component {
   render() {
     return (
       <div className="feedback-container">
-        <div className="imagePanel">
+        <div className="image-panel">
         <img src={this.props.feedbackItem.image_url} alt={'project'}></img>
         </div>
-        <div className="textPanel">
+        <div className="text-panel">
           <p>Feedback ID: {this.props.feedbackItem.id}</p>
         <p>{this.props.feedbackItem.first_name + " " + this.props.feedbackItem.last_name}</p>
         <p><strong>Rating: </strong>{this.props.feedbackItem.rating}/5</p>
         <p><strong>Comments: </strong>{this.props.feedbackItem.comments}</p>
-        <p><strong>Allowed to share publicly: </strong>{String(this.props.feedbackItem.ok_to_share)}</p>
-        <p><strong>Public? </strong>{String(this.props.feedbackItem.is_public)}</p>
+        {/* <p><strong>Allowed to share publicly: </strong>{String(this.props.feedbackItem.ok_to_share)}</p> */}
+        {/* <p><strong>Public? </strong>{String(this.props.feedbackItem.is_public)}</p> */}
         </div>
-        <div className="buttonPanel">
-        <button onClick={this.deleteFeedback}>Delete</button>
-        <button onClick={this.featureFeedback}>Feature</button>
+        <div className="button-panel">
+        <button className="btn btn-feedback"  onClick={this.deleteFeedback}>Delete</button>
+        <button className="btn btn-feedback"  onClick={this.featureFeedback}>Feature</button>
         </div>
       </div>
     );
