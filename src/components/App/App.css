@@ -120,6 +120,13 @@ input {
   margin: auto;
 }
 
+@media only screen and (max-width: 700px) {
+  .container{
+    max-width: 20rem;
+    margin: auto;
+  }
+}
+
 .header-main{
   background-image: url(../../img/wood-header.png);
 }
