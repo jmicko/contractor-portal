@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import RegisterForm from '../RegisterForm/RegisterForm';
+import LoginForm from '../LoginForm/LoginForm';
 import ContactCards from '../ContactCards/ContactCards';
 import './ContactPage.css';
 
@@ -28,16 +28,19 @@ class Contact extends Component {
         </div>
         <div>
           {this.props.store.user.id
-            ?<ContactCards />
-            :<div>
-              <RegisterForm />
-              <h4>Already a Member?</h4>
-              <button className="btn btn_sizeSm" onClick={this.onLogin}>
-                Login
-              </button>
+            ? <ContactCards />
+            : <div>
+              <LoginForm />
+              <center>
+                <button
+                  type="button"
+                  className="btn btn_asLink"
+                  onClick={() => { this.props.history.push('/registration'); }}>
+                  Register
+                </button>
+              </center>
             </div>
           }
-
         </div>
       </div>
     );

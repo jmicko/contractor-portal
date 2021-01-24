@@ -101,7 +101,7 @@ Form Treatment
 
 .formPanel {
   box-sizing: border-box;
-  width: 400px;
+  width: max-content;
   max-width: 100%;
   padding: 25px;
   margin: 0 auto 20px;

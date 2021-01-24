@@ -22,7 +22,7 @@ const Nav = (props) => {
       <Link to="/home">
         <h2 className="nav-title">Home</h2>
       </Link>
-      <div className="nav-right">
+      <div className="nav-center">
 
 
         {/* I LIKE THIS IDEA AND MIGHT USE IT LATER, BUT JUST SAVING IT HERE FOR NOW */}
@@ -33,15 +33,12 @@ const Nav = (props) => {
         and call this link 'Login / Register' if they are not */}
           {/* {loginLinkData.text} */}
         {/* </Link> */}
-        {/* Show the link to the info page and the logout button if the user is logged in */}
-        {props.store.user.id && (
-          <>
-            <Link className="nav-link" to="/info">
-              Info Page
-            </Link>
-            <LogOutButton className="nav-link" />
-          </>
-        )}
+        <Link className="nav-link" to="/gallery">
+          Gallery
+        </Link>
+        <Link className="nav-link" to="/Blog">
+          Blog
+        </Link>
         {/* Show the contact page */}
         {/* todo - redirect to login if not logged in */}
         <Link className="nav-link" to="/contact">
@@ -52,6 +49,15 @@ const Nav = (props) => {
           About
         </Link> */}
       </div>
+      <div className="nav-right">
+        {/* Show the link to the info page and the logout button if the user is logged in */}
+        {props.store.user.id
+            ?<LogOutButton className="nav-link" />
+            :<Link className="nav-link" to="/login">
+              Log In
+            </Link>
+        }
+        </div>
     </div>
   );
 };

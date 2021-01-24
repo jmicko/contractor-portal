@@ -7,6 +7,8 @@
 }
 
 .nav {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   /* margin: 0 0 30px; */
   background-color: #302825;
   overflow: hidden;
@@ -19,6 +21,7 @@
 }
 
 .nav-link {
+  height: 4rem;
   float: left;
   color: #f2f2f2;
   background-color: #302825;
@@ -37,6 +40,16 @@ the nav bar look like another link */
   background-color: #583929;
 }
 
-.nav-right {
-  float: right;
+.nav-center {
+  /* float: right; */
+  /* align-self: center; */
+  width: max-content;
+  margin: auto;
+}
+
+.nav-right{
+  /* float: right; */
+  justify-self: right;
+  /* margin: auto; */
+  display: inline;
 }
