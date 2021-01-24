@@ -118,3 +118,13 @@ input {
   max-width: 60rem;
   margin: auto;
 }
+
+.header-main{
+  background-image: url(../../img/wood-header.png);
+}
+
+.header-main h1{
+  text-align: center;
+  margin: 0;
+  padding: 2rem;
+}

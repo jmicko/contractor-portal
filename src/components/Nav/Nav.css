@@ -7,9 +7,15 @@
 }
 
 .nav {
-  margin: 0 0 30px;
+  /* margin: 0 0 30px; */
   background-color: #986247;
   overflow: hidden;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  height: 4rem;
+  width: 100%;
+  overscroll-behavior: contain;
 }
 
 .nav-link {
@@ -20,12 +26,11 @@
   padding: 24px 10px;
   text-decoration: none;
   font-size: 15px;
-
   /* these last two make the logout button in
-  the nav bar look like another link */
-  border:none;
+the nav bar look like another link */
+  border: none;
   cursor: pointer;
-  outline:0;
+  outline: 0;
 }
 
 .nav-link:hover {
