@@ -30,7 +30,7 @@
 
 .contact-card-container{
     display: grid;
-
+    grid-template-columns: repeat(3, min-content);
 }
 
 .request{
@@ -44,3 +44,4 @@
 .history{
     grid-column: 3;
 }
+

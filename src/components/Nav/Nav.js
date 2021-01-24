@@ -18,16 +18,21 @@ const Nav = (props) => {
 
   return (
     <div className="nav">
+
       <Link to="/home">
-        <h2 className="nav-title">Cohen & Sons Lumber Manipulation</h2>
+        <h2 className="nav-title">Home</h2>
       </Link>
       <div className="nav-right">
-        <Link className="nav-link" to={loginLinkData.path}>
+
+
+        {/* I LIKE THIS IDEA AND MIGHT USE IT LATER, BUT JUST SAVING IT HERE FOR NOW */}
+
+        {/* <Link className="nav-link" to={loginLinkData.path}> */}
           {/* Show this link if they are logged in or not,
           but call this link 'Home' if they are logged in,
         and call this link 'Login / Register' if they are not */}
-          {loginLinkData.text}
-        </Link>
+          {/* {loginLinkData.text} */}
+        {/* </Link> */}
         {/* Show the link to the info page and the logout button if the user is logged in */}
         {props.store.user.id && (
           <>
