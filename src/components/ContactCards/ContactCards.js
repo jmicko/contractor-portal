@@ -15,33 +15,41 @@ class ContactCards extends Component {
   render() {
     return (
       <div className="contact-card-container">
-        <div className="contact-card request">
+        <div
+          className="contact-card request"
+          onClick={() => {
+            this.props.history.push('/workrequest');
+          }}
+        >
           <button
             type="button"
             className="btn-contact-card"
-            onClick={() => {
-              this.props.history.push('/workrequest');
-            }}>
+          >
             Request Work
         </button>
         </div>
-        <div className="contact-card feedback">
+        <div
+          className="contact-card feedback"
+          onClick={() => {
+            this.props.history.push('/feedback');
+          }}
+        >
           <button
             type="button"
             className="btn-contact-card"
-            onClick={() => {
-              this.props.history.push('/feedback');
-            }}>
+          >
             Send Feedback
       </button>
         </div>
-        <div className="contact-card history">
+        <div
+          className="contact-card history"
+          onClick={() => {
+            this.props.history.push('/history');
+          }}
+        >
           <button
             type="button"
             className="btn-contact-card"
-            onClick={() => {
-              this.props.history.push('/history');
-            }}
           >
             View History
       </button>
