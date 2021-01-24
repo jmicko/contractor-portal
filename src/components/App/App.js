@@ -124,14 +124,13 @@ class App extends Component {
                 component={RegisterPage}
                 authRedirect="/user"
               />
-              <ProtectedRoute
+              <Route
                 // with authRedirect:
                 // - if logged in, redirects to "/user"
                 // - else shows LandingPage at "/home"
                 exact
                 path="/home"
                 component={LandingPage}
-                authRedirect="/user"
               />
 
               {/* If none of the other routes matched, we will show a 404. */}
