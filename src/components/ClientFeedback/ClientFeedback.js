@@ -66,15 +66,9 @@ class Feedback extends Component {
         {/* <h3>
           state
         </h3>
-        {JSON.stringify(this.state)}
-        <h3>
-          user
-        </h3>
-        {JSON.stringify(this.props.store.user)} */}
+        {JSON.stringify(this.state)} */}
         {/* Client Feedback form */}
         {/* todo - move into separate component */}
-        {/* todo - create Admin feedback review component */}
-        {/* todo - conditionally render client/admin components based on is_admin user property */}
         <form className="formPanel" onSubmit={this.sendFeedback}>
           <h2>Send Feedback</h2>
           <div>
@@ -96,7 +90,6 @@ class Feedback extends Component {
                 type="text"
                 name="last_name"
                 value={this.state.last_name}
-                // required
                 onChange={this.handleInputChangeFor('last_name')}
               />
             </label>
@@ -166,7 +159,6 @@ class Feedback extends Component {
                 type="text"
                 name="image_url"
                 value={this.state.image_url}
-                // required
                 onChange={this.handleInputChangeFor('image_url')}
               />
             </label>
