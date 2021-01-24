@@ -16,25 +16,41 @@ import Card from '../Card/Card';
 class ContactCards extends Component {
   state = {
     heading: 'Class Component',
+    feedbackText: "Send Feedback",
+    workrequestText: "Request Work",
   };
+
+  componentDidMount() {
+    this.checkAdmin();
+  }
+
+  checkAdmin = () => {
+    if (this.props.store.user.is_admin) {
+      this.setState({
+        feedbackText: "Review Feedback",
+        workrequestText: "Review Work Requests",
+      })
+    }
+  }
 
   render() {
     return (
       <div className="contact-card-container">
+        {/* {JSON.stringify(this.props.store.user.is_admin)} */}
         <Card
           nav="workrequest"
-          navText="Request Work"
+          navText={this.state.workrequestText}
           classes="gc1"
           icon={paper}
           iconText='request form'
-          />
+        />
         <Card
           nav="feedback"
-          navText="Send Feedback"
+          navText={this.state.feedbackText}
           classes="gc2"
           icon={stars}
           iconText='5 stars'
-          />
+        />
         <Card
           nav="history"
           navText="View History"
