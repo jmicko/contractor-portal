@@ -68,7 +68,7 @@ class App extends Component {
                 />
 
               {/* Visiting localhost:3000/feedback will show the about page. */}
-              <Route
+              <ProtectedRoute
                 // shows AboutPage at all times (logged in or not)
                 exact
                 path="/workrequest"

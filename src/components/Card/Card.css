@@ -3,7 +3,7 @@
     flex-direction: column;
     align-content: center;
     border-radius: .3em;
-    background-color: rgb(73, 87, 85);
+    background-color: rgb(203, 223, 220);
     /* justify-content: center; */
     /* align-self: flex-end; */
     color: black;
@@ -33,7 +33,7 @@
 
 .contact-card h2{
     color: rgb(221, 221, 221);
-    background-color: rgba(32, 51, 158, 0.363);
+    background-color: rgba(0, 0, 0, 0.815);
     text-align: center;
     width: 100%;
     margin: 1rem auto 0;

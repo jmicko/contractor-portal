@@ -1,8 +1,3 @@
-
--- USER is a reserved keyword with Postgres
--- You must use double quotes in every query that user is in:
--- ex. SELECT * FROM "user";
--- Otherwise you will have errors!
 CREATE TABLE "user" (
   "id" SERIAL PRIMARY KEY,
   "first_name" varchar,
@@ -14,14 +9,14 @@ CREATE TABLE "user" (
 );
 
 CREATE TABLE "feedback" (
-  "id" int PRIMARY KEY,
+  "id" SERIAL PRIMARY KEY,
   "user_id" int,
   "first_name" varchar,
   "last_name" varchar,
   "rating" int,
   "comments" varchar,
   "image_url" varchar,
-  "ok_to_share" boolean,
+  "ok_to_share" boolean DEFAULT FALSE,
   "is_public" boolean DEFAULT FALSE,
   "project_name" varchar
 );
@@ -52,8 +47,8 @@ ALTER TABLE "work_request" ADD FOREIGN KEY ("user_id") REFERENCES "user" ("id");
 
 ALTER TABLE "feedback" ADD FOREIGN KEY ("user_id") REFERENCES "user" ("id");
 
--- insert values
+-- insert user values
 
-INSERT INTO "public"."user"("first_name", "last_name", "phone", "email", "password", "is_admin") VALUES('Ad', 'Min', '098-765-4321', 'admin@domain.com', '$2a$10$sDR0w3HCQ5Nl7NGlno1ehO9cI0MEXbgyUkaknfYdcfY9NADlY9.4m', TRUE);
+INSERT INTO "public"."user"("first_name", "last_name", "phone", "email", "password", "is_admin") VALUES('Admin', 'Contractor', '098-765-4321', 'admin@admin.com', '$2a$10$WOyN9iMLUrvuJtmFcPU6ZOpi2APc0S2piK/CMbOV1QxTQjAKORW6W', TRUE);
 
-INSERT INTO "public"."user"("first_name", "last_name", "phone", "email", "password", "is_admin") VALUES('John', 'Doe', '123-456-7890', 'email@domain.com', '$2a$10$pLUNwC5Vs7kW5fJ5rNwnOuWYKO/oNSxg6w3.WbmU8KGZhVlJj6s1S', FALSE);
+INSERT INTO "public"."user"("first_name", "last_name", "phone", "email", "password", "is_admin") VALUES('Client', 'User', '123-456-7890', 'client@client.com', '$2a$10$vrHAW4POXerQtYlUBmBqoebMnWPvZr2LyfqcQO2Vn6nHha8QJexFq', FALSE);
