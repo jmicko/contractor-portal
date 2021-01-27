@@ -68,16 +68,25 @@ router.put('/feedbackReview', rejectUnauthenticated, (req, res) => {
 
 // DELETE route
 router.delete('/feedbackReview', rejectUnauthenticated, (req, res) => {
-  console.log('req.payload in delete route is:', req.headers.feedbackid)
-  const id = req.headers.feedbackid;
-  const queryText = `DELETE FROM "feedback" WHERE "id"=$1;`;
-  pool
-  .query(queryText, [id])
-  .then(() => res.sendStatus(200))
-  .catch((err) => {
-    console.log('Feedback GET failed: ', err);
-    res.sendStatus(500);
+
+  let id = '';
+  let queryText = '';
+  // make sure user is admin before setting up querytext
+  if (req.user.is_admin === true) {
+    id = req.headers.feedbackid;
+    queryText = `DELETE FROM "feedback" WHERE "id"=$1;`;
+    pool
+    .query(queryText, [id])
+    .then(() => res.sendStatus(200))
+    .catch((err) => {
+      console.log('Feedback GET failed: ', err);
+      res.sendStatus(500);
   });
-});
+  } else {
+    console.log('User not allowed to do that!');
+    res.sendStatus(403)
+  }
+}
+);
 
 module.exports = router;
