@@ -14,7 +14,7 @@ class LandingPage extends Component {
   };
 
   componentDidMount() {
-    const action = { type: 'FETCH_FEEDBACK' };
+    const action = { type: 'FETCH_FEATURED_FEEDBACK' };
     this.props.dispatch(action);
   }
 

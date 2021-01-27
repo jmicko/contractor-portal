@@ -16,6 +16,17 @@ router.get('/feedbackReview', rejectUnauthenticated, (req, res) => {
   });
 });
 
+// GET route
+router.get('/featuredFeedback', rejectUnauthenticated, (req, res) => {
+  // todo - ORDER BY (date probably, need to adjust table)
+  pool.query(`SELECT * FROM "feedback" WHERE "is_public"=true ORDER BY "id" desc;`)
+  .then((result) => res.send(result))
+  .catch((err) => {
+    console.log('Feedback GET failed: ', err);
+    res.sendStatus(500);
+  });
+});
+
 // POST route
 router.post('/clientFeedback', rejectUnauthenticated, (req, res, next) => {
   const user_id = req.user.id;

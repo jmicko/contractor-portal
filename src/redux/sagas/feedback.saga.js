@@ -25,6 +25,30 @@ function* fetchFeedback(action) {
   }
 }
 
+// get featured feedback from db
+function* fetchFeaturedFeedback(action) {
+  try {
+    const config = {
+      headers: { 'Content-Type': 'application/json' },
+      withCredentials: true,
+    };
+
+    // the config includes credentials which
+    // allow the server session to recognize the user
+    // if a user is logged in
+    // it will send the feedback items
+    const response = yield axios.get('/api/feedback/featuredFeedback', config);
+    console.log('THIS SHOULD BE FEEDBACK ITEMS', response.data.rows);
+
+    // now that the session has ended on the server
+    // remove the client-side user object to let
+    // the client-side code know the user is logged out
+    yield put({ type: 'SET_FEEDBACK', payload: response.data.rows });
+  } catch (error) {
+    console.log('Feedback get request failed', error);
+  }
+}
+
 // send feedback to db
 function* sendFeedback(action) {
   try {
@@ -101,6 +125,7 @@ function* deleteFeedback(action) {
 function* loginSaga() {
   yield takeLatest('SEND_FEEDBACK', sendFeedback);
   yield takeLatest('FETCH_FEEDBACK', fetchFeedback);
+  yield takeLatest('FETCH_FEATURED_FEEDBACK', fetchFeaturedFeedback);
   yield takeLatest('DELETE_FEEDBACK', deleteFeedback);
   yield takeLatest('UPDATE_FEEDBACK', updateFeedback);
 }
