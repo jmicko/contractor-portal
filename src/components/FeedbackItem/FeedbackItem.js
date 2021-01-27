@@ -34,20 +34,24 @@ class TemplateClass extends Component {
     return (
       <div className="feedback-container">
         <div className="image-panel">
-        <img src={this.props.feedbackItem.image_url} alt={'project'}></img>
+          <img src={this.props.feedbackItem.image_url} alt={'project'}></img>
         </div>
         <div className="text-panel">
           <p>Feedback ID: {this.props.feedbackItem.id}</p>
-        <p>{this.props.feedbackItem.first_name + " " + this.props.feedbackItem.last_name}</p>
-        <p><strong>Rating: </strong>{this.props.feedbackItem.rating}/5</p>
-        <p><strong>Comments: </strong>{this.props.feedbackItem.comments}</p>
-        {/* <p><strong>Allowed to share publicly: </strong>{String(this.props.feedbackItem.ok_to_share)}</p> */}
-        {/* <p><strong>Public? </strong>{String(this.props.feedbackItem.is_public)}</p> */}
+          <p>{this.props.feedbackItem.first_name + " " + this.props.feedbackItem.last_name}</p>
+          <p><strong>Rating: </strong>{this.props.feedbackItem.rating}/5</p>
+          <p><strong>Comments: </strong>{this.props.feedbackItem.comments}</p>
+          {/* <p><strong>Allowed to share publicly: </strong>{String(this.props.feedbackItem.ok_to_share)}</p> */}
+          {/* <p><strong>Public? </strong>{String(this.props.feedbackItem.is_public)}</p> */}
         </div>
-        <div className="button-panel">
-        <button className="btn btn-feedback"  onClick={this.featureFeedback}>Feature</button>
-        <button className="btn btn-feedback"  onClick={this.deleteFeedback}>Delete</button>
-        </div>
+        {this.props.parent === 'LandingPage'
+          ? <></>
+          :
+          <div className="button-panel">
+            <button className="btn btn-feedback" onClick={this.featureFeedback}>Feature</button>
+            <button className="btn btn-feedback" onClick={this.deleteFeedback}>Delete</button>
+          </div>
+        }
       </div>
     );
   }
