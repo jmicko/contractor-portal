@@ -33,25 +33,31 @@ class TemplateClass extends Component {
   render() {
     return (
       <div className="feedback-container">
-        {/* {JSON.stringify(this.props.store.user.is_admin)} */}
+        {/* {JSON.stringify(this.props.feedbackItem.is_public)} */}
         <div className="image-panel">
           <img src={this.props.feedbackItem.image_url} alt={'project'}></img>
         </div>
         <div className="text-panel">
           <p>Feedback ID: {this.props.feedbackItem.id}</p>
-          <p>{this.props.feedbackItem.first_name + " " + this.props.feedbackItem.last_name}</p>
+          <p><strong>Name:</strong> {this.props.feedbackItem.first_name + " " + this.props.feedbackItem.last_name}</p>
           <p><strong>Rating: </strong>{this.props.feedbackItem.rating}/5</p>
           <p><strong>Comments: </strong>{this.props.feedbackItem.comments}</p>
           {/* <p><strong>Allowed to share publicly: </strong>{String(this.props.feedbackItem.ok_to_share)}</p> */}
           {/* <p><strong>Public? </strong>{String(this.props.feedbackItem.is_public)}</p> */}
         </div>
-        {this.props.parent === 'LandingPage'
-          ? <></>
-          :
+        {this.props.parent === 'FeedbackReview'
+          ? 
           <div className="button-panel">
-            <button className="btn btn-feedback" onClick={this.featureFeedback}>Feature</button>
+            <button className="btn btn-feedback" onClick={this.featureFeedback}>
+              {this.props.feedbackItem.is_public
+              ? 'Remove from Home'
+              : 'Feature on Home'
+              }
+              </button>
             <button className="btn btn-feedback" onClick={this.deleteFeedback}>Delete</button>
           </div>
+          :
+          <></>
         }
       </div>
     );

@@ -42,7 +42,9 @@ class LandingPage extends Component {
           {this.props.store.user.id != null
             ?
             <div className="greeting">
+              <div className="formPanel">
               <h2>Welcome Back!</h2>
+              </div>
             </div>
             :
             <div className="greeting">
@@ -56,6 +58,7 @@ class LandingPage extends Component {
             </div>
           }
           <div className="home-feedback">
+            <h3>What are my customers saying?</h3>
             {/* loop through the returned feedback items here and display on dom */}
             {this.props.store.feedback.map((feedbackItem) => {
               return (
