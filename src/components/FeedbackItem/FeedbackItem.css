@@ -39,10 +39,17 @@
         margin: auto;
     }
 
+
     .btn-feedback{
         margin: .5rem;
+        width: 100%;
     }
-  }
+}
+
+.btn-feedback{
+    margin: .5rem;
+    width: 100%;
+}
 
 .feedback-container img{
     width: 20rem;
