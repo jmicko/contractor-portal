@@ -10,14 +10,16 @@ import FeedbackItem from '../FeedbackItem/FeedbackItem'
 
 class LandingPage extends Component {
   state = {
-    heading: 'Welcome',
+    heading: 'Welcome!',
   };
 
   componentDidMount() {
+    // Grab all featured feedback items on page load
     const action = { type: 'FETCH_FEATURED_FEEDBACK' };
     this.props.dispatch(action);
   }
 
+  // go to login page if login button is pushed
   onLogin = (event) => {
     this.props.history.push('/login');
   };
@@ -28,6 +30,7 @@ class LandingPage extends Component {
         <h2>{this.state.heading}</h2>
 
         <div className="description">
+          {/* todo - create admin page where this intro paragraph can be changed */}
           <p>
             Lumber ipsum dolor sit down in this handmade chair, consectetur adipiscing elit. Curabitur
             id felis metus. Vestibulum et pulvinar tortor. Morbi pharetra
