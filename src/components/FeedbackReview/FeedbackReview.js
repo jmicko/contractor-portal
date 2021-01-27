@@ -32,6 +32,7 @@ class FeedbackReview extends Component {
             <div>
             <FeedbackItem
               key={FeedbackItem.id}
+              parent='FeedbackReview'
               feedbackItem={feedbackItem}
               />
               </div>
