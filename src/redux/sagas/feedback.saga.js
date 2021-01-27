@@ -13,7 +13,7 @@ function* fetchFeedback(action) {
     // allow the server session to recognize the user
     // if a user is logged in
     // it will send the feedback items
-    const response = yield axios.get('/api/forms/feedbackReview', config);
+    const response = yield axios.get('/api/feedback/feedbackReview', config);
     console.log('THIS SHOULD BE FEEDBACK ITEMS', response.data.rows);
 
     // now that the session has ended on the server
@@ -37,7 +37,7 @@ function* sendFeedback(action) {
     // send the action.payload as the body
     // the config includes credentials which
     // allow the server session to recognize the user
-    yield axios.post('/api/forms/clientFeedback', action.payload, config);
+    yield axios.post('/api/feedback/clientFeedback', action.payload, config);
     // do a put thing to fetch the stuff right after so it shows up on the same page.
     // because nothing is telling it to get the new data. 
     // Can remove this later once I have split the components
@@ -63,7 +63,7 @@ function* updateFeedback(action) {
     // send the action.payload as the body
     // the config includes credentials which
     // allow the server session to recognize the user
-    yield axios.put('/api/forms/feedbackReview', config);
+    yield axios.put('/api/feedback/feedbackReview', config);
     // do a put thing to fetch the stuff right after so it shows up on the same page.
     // because nothing is telling it to get the new data. 
     // Can remove this later once I have split the components
@@ -88,7 +88,7 @@ function* deleteFeedback(action) {
     // allow the server session to recognize the user
     // if a user is logged in
     // it will send the feedback items
-    yield axios.delete('/api/forms/feedbackReview', config);
+    yield axios.delete('/api/feedback/feedbackReview', config);
     // console.log('THIS SHOULD BE FEEDBACK ITEMS', response.data.rows);
 
     // refresh feedback reducer

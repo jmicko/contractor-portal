@@ -68,15 +68,19 @@ router.put('/feedbackReview', rejectUnauthenticated, (req, res) => {
 
 // DELETE route
 router.delete('/feedbackReview', rejectUnauthenticated, (req, res) => {
-  console.log('req.payload in delete route is:', req.headers.feedbackid)
-  const id = req.headers.feedbackid;
-  const queryText = `DELETE FROM "feedback" WHERE "id"=$1;`;
-  pool
-  .query(queryText, [id])
-  .then(() => res.sendStatus(200))
-  .catch((err) => {
-    console.log('Feedback GET failed: ', err);
-    res.sendStatus(500);
+  console.log('req.user.is_admin in delete route is:', req.user.is_admin)
+  let id = '';
+  let queryText = '';
+  if (req.user.is_admin === true) {
+    id = req.headers.feedbackid;
+    queryText = `DELETE FROM "feedback" WHERE "id"=$1;`;
+  }
+    pool
+    .query(queryText, [id])
+    .then(() => res.sendStatus(200))
+    .catch((err) => {
+      console.log('Feedback GET failed: ', err);
+      res.sendStatus(500);
   });
 });
 

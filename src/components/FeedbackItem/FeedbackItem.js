@@ -33,6 +33,7 @@ class TemplateClass extends Component {
   render() {
     return (
       <div className="feedback-container">
+        {/* {JSON.stringify(this.props.store.user.is_admin)} */}
         <div className="image-panel">
           <img src={this.props.feedbackItem.image_url} alt={'project'}></img>
         </div>
