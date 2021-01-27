@@ -17,7 +17,7 @@ router.get('/feedbackReview', rejectUnauthenticated, (req, res) => {
 });
 
 // GET route
-router.get('/featuredFeedback', rejectUnauthenticated, (req, res) => {
+router.get('/featuredFeedback', (req, res) => {
   // todo - ORDER BY (date probably, need to adjust table)
   pool.query(`SELECT * FROM "feedback" WHERE "is_public"=true ORDER BY "id" desc;`)
   .then((result) => res.send(result))
