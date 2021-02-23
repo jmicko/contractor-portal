@@ -19,6 +19,13 @@ class ClientWorkRequest extends Component {
     weekends_okay: '',
   };
 
+  componentDidMount(){
+    this.setState({
+      phone: this.props.store.user.phone,
+      email: this.props.store.user.email
+    })
+    this.props.dispatch({ type: 'FETCH_WORK_TYPES' });
+  }
 
   handleInputChangeFor = (propertyName) => (event) => {
     this.setState({
@@ -26,10 +33,17 @@ class ClientWorkRequest extends Component {
     });
   };
 
+  sendFeedback = (event) => {
+    event.preventDefault();
+    // this.props.dispatch({ type: 'SUBMIT_WORK_REQUEST' });
+    console.log('feedback is being sent!');
+  }
+
 
   render() {
     return (
       <div>
+        {JSON.stringify(this.props.store.user)}
         <form className="formPanel" onSubmit={this.sendFeedback}>
           <h2>Send a request for work</h2>
           <div>
@@ -39,7 +53,7 @@ class ClientWorkRequest extends Component {
                 type="text"
                 name="project_name"
                 value={this.state.project_name}
-                placeholder="First Name"
+                placeholder="Project Name"
                 required
                 onChange={this.handleInputChangeFor('project_name')}
               />
@@ -49,7 +63,7 @@ class ClientWorkRequest extends Component {
             <label htmlFor="description">
               Description of work:
           <textarea
-                type="text"
+                // type="text"
                 name="description"
                 value={this.state.description}
                 // required
@@ -136,9 +150,9 @@ class ClientWorkRequest extends Component {
                 onChange={this.handleInputChangeFor('is_public')} />
             </label>
           </div> */}
-          <div>
-            <input className="btn" type="submit" name="submit" value="Send" />
-          </div>
+        <div>
+          <input className="btn" type="submit" name="submit" value="Send" />
+        </div>
         </form>
       </div>
     );

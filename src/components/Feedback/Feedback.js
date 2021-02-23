@@ -14,11 +14,9 @@ class Feedback extends Component {
       <div>
         {/* <h2>{this.state.heading}</h2> */}
         {this.props.store.user.is_admin
-        ? <FeedbackReview />
-        : <ClientFeedback />
+          ? <FeedbackReview />
+          : <ClientFeedback />
         }
-       
-       
       </div>
     );
   }
