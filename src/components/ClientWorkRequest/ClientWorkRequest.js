@@ -35,7 +35,7 @@ class ClientWorkRequest extends Component {
 
   sendFeedback = (event) => {
     event.preventDefault();
-    // this.props.dispatch({ type: 'SUBMIT_WORK_REQUEST' });
+    this.props.dispatch({ type: 'SEND_WORK_REQUEST', payload: this.state });
     console.log('feedback is being sent!');
   }
 
