@@ -24,6 +24,7 @@ function* fetchWorkRequests() {
     // the config includes credentials which
     // allow the server session to recognize the user
     const response = yield axios.get('/api/workRequest');
+    console.log('response from server', response.data);
     yield put({ type: 'SET_WORK_REQUESTS', payload: response.data.rows });
   } catch (error) {
     console.log('Error with fetch work request saga:', error);

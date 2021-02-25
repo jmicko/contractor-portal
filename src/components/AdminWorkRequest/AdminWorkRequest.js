@@ -18,7 +18,7 @@ class AdminWorkRequest extends Component {
   render() {
     return (
       <div>
-        <h2>{this.state.heading}</h2>
+        <p>{JSON.stringify(this.props.store)}</p>
       </div>
     );
   }
