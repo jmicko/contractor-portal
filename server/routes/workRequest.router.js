@@ -11,19 +11,22 @@ const {
  */
 router.get('/', rejectUnauthenticated, (req, res) => {
   // GET route code here
-  if (req.user.is_admin){
+  if (req.user.is_admin) {
     console.log('work request get route connected');
     const queryText = `
-    SELECT * FROM "work_request"
+    SELECT "work_request".id, "user_id", "project_name", "description", "location", "dimensions", "image_url", "work_request"."phone", "work_request"."email", "best_time_to_call", "weekends_ok", "first_name", "last_name", "work_type"."text" FROM "work_request"
     JOIN "user" ON "user".id = "work_request".user_id
     JOIN "work_type" ON "work_type".id = "work_request".work_type_id
     ORDER BY "work_request".id desc;`;
-    response = pool.query(queryText)
-    .then((result) => res.send(result))
-    .catch((error) => {
-      console.log('work request GET failed: ', error);
-      res.sendStatus(500);
-    });
+    pool.query(queryText)
+      .then((result) => {
+        res.send(result);
+        console.log(result)
+      })
+      .catch((error) => {
+        console.log('work request GET failed: ', error);
+        res.sendStatus(500);
+      });
   } else {
     console.log('you do not have permission to do that.');
     res.sendStatus(403)
@@ -69,13 +72,13 @@ router.post('/', rejectUnauthenticated, (req, res) => {
     // todo - replace below with above when working on dom
     true
   ])
-  .then(()=>{
-    res.sendStatus(200);
-  })
-  .catch((error)=>{
-    console.log('Error adding new job request', error);
-    res.sendStatus(500);
-  })
+    .then(() => {
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log('Error adding new job request', error);
+      res.sendStatus(500);
+    })
 });
 
 module.exports = router;

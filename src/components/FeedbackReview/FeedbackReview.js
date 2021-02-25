@@ -24,18 +24,18 @@ class FeedbackReview extends Component {
     return (
       <div>
         <center>
-        <h2>{this.state.heading}</h2>
+          <h2>{this.state.heading}</h2>
         </center>
         {/* {JSON.stringify(this.props.store.feedback)} */}
         {this.props.store.feedback.map((feedbackItem) => {
           return (
             <div>
-            <FeedbackItem
-              key={FeedbackItem.id}
-              parent='FeedbackReview'
-              feedbackItem={feedbackItem}
+              <FeedbackItem
+                key={FeedbackItem.id}
+                parent='FeedbackReview'
+                feedbackItem={feedbackItem}
               />
-              </div>
+            </div>
           )
         })}
       </div>

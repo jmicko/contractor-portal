@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import WorkRequestItem from '../WorkRequestItem/WorkRequestItem';
 
 // Basic class component structure for React with default state
 // value setup. When making a new component be sure to replace
@@ -8,17 +9,32 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 // component.
 class AdminWorkRequest extends Component {
   state = {
-    heading: 'Class Component',
+    heading: 'Work Requests',
   };
 
-  componentDidMount(){
+  componentDidMount() {
     this.props.dispatch({ type: 'FETCH_WORK_REQUESTS', payload: this.state });
   }
 
   render() {
     return (
       <div>
-        <p>{JSON.stringify(this.props.store)}</p>
+        {/* <p>{JSON.stringify(this.props.store)}</p> */}
+        <center>
+          <h2>{this.state.heading}</h2>
+        </center>
+
+        {this.props.store.workRequest.map((workRequestItem) => {
+          return (
+            <div>
+              <WorkRequestItem
+                key={workRequestItem.id}
+                parent='FeedbackReview'
+                workRequestItem={workRequestItem}
+              />
+            </div>
+          )
+        })}
       </div>
     );
   }
