@@ -10,7 +10,6 @@ function* sendWorkRequest(action) {
     // the config includes credentials which
     // allow the server session to recognize the user
     yield axios.post('/api/workRequest', action.payload);
-    // yield put({ type: 'FETCH_FEEDBACK', });
   } catch (error) {
     console.log('Error with send work request saga:', error);
   }  
@@ -24,8 +23,8 @@ function* fetchWorkRequests() {
     // send the action.payload as the body
     // the config includes credentials which
     // allow the server session to recognize the user
-    yield axios.get('/api/workRequest');
-    // yield put({ type: 'FETCH_FEEDBACK', });
+    const response = yield axios.get('/api/workRequest');
+    yield put({ type: 'SET_WORK_REQUESTS', payload: response.data.rows });
   } catch (error) {
     console.log('Error with fetch work request saga:', error);
   }  

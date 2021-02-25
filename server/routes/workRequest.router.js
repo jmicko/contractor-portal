@@ -9,10 +9,24 @@ const {
 /**
  * GET route template
  */
-router.get('/', (req, res) => {
+router.get('/', rejectUnauthenticated, (req, res) => {
   // GET route code here
   if (req.user.is_admin){
     console.log('work request get route connected');
+    const queryText = `
+    SELECT * FROM "work_request"
+    JOIN "user" ON "user".id = "work_request".user_id
+    JOIN "work_type" ON "work_type".id = "work_request".work_type_id
+    ORDER BY "work_request".id desc;`;
+    response = pool.query(queryText)
+    .then((result) => res.send(result))
+    .catch((error) => {
+      console.log('work request GET failed: ', error);
+      res.sendStatus(500);
+    });
+  } else {
+    console.log('you do not have permission to do that.');
+    res.sendStatus(403)
   }
 });
 
