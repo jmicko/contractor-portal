@@ -11,6 +11,9 @@ const {
  */
 router.get('/', (req, res) => {
   // GET route code here
+  if (req.user.is_admin){
+    console.log('work request get route connected');
+  }
 });
 
 /**
