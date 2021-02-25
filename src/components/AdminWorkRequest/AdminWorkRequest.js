@@ -13,7 +13,7 @@ class AdminWorkRequest extends Component {
   };
 
   componentDidMount() {
-    this.props.dispatch({ type: 'FETCH_WORK_REQUESTS', payload: this.state });
+    this.props.dispatch({ type: 'FETCH_WORK_REQUESTS' });
   }
 
   render() {
